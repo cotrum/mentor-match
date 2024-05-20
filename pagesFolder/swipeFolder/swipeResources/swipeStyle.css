@@ -1,0 +1,221 @@
+/* body layout */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+/* style for the header */
+.header {
+  display: inline-block;
+  width: 100%;
+  border-bottom: 2px solid #ffffff;
+}
+
+/* style for the home buttom image */
+#homeButtonImg{
+  cursor: pointer;
+  height: 4em;
+}
+
+/* style for card container */
+#swiper {
+  padding-top: 20px;
+  height: 70vh;
+  aspect-ratio: 2 / 3;
+  perspective: 1000px;
+  perspective-origin: center 50%;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* style for individual cards */
+.card {
+  border: 2px solid black;
+  margin: 10px;
+  width: 110%;
+  height: 100%;
+  position: absolute; 
+  border-radius: 20px;
+  /* styling for the animations */ 
+  overflow: hidden;
+  transform: translateZ(calc(-1px * var(--i))) translateY(calc(-1px * var(--i)));
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.5s;
+}
+
+/* style for images inside cards */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* style for like and dislike buttons */
+#like,
+#dislike {
+  font-size: 16vh;
+  border-radius: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+  /* animation parameters */ 
+  animation-name: animation1;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  /* don't run the animation at the beginning */
+  animation-play-state: paused;
+}
+
+/* animation when triggered */
+#like.trigger,
+#dislike.trigger {
+  animation-name: animation2;
+}
+
+/* style for like button */
+#like {
+  left: 1050px; 
+  top: 50%; /* vertically center */
+  color: rgb(220, 82, 110);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* style for dislike button */
+#dislike {
+  right: 1000px; 
+  top: 50%; /* vertically center */
+  color: #ccc;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/*float header elements*/
+#floatRight{
+  float: right;
+}
+
+#floatLeft{
+  float: left;
+  margin: 0em;
+  padding: 0em;
+}
+
+/*for styling social media icons -- referenced from MonstersPost.com*/
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+.clip {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.svg--source {
+  display: none
+}
+
+.svg--icon {
+  width: 100%;
+  max-width: 4rem;
+  height: 100%;
+  max-height: 4rem;
+  display: block;
+  margin: 0 auto;
+  fill: currentColor
+}
+
+.wrapper {
+  width: 100%;
+  height: 0vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.share {
+  width: 3rem;
+  height: 3rem;
+  float: left;
+  margin: .5rem 1rem .5rem 0;
+  color: #353c4a;
+  border: .125rem solid #f3f3f3;
+  box-shadow: 0 0 8px 0 rgba(50, 50, 50, 0.15);
+  border-radius: 50%;
+  transition: 250ms;
+  
+  &:last-child {
+    margin-right: 0
+  }
+  
+  &:hover,
+  &:focus {
+    //background: #f1f1f1;
+  }
+  
+  &:focus {
+    outline-color: inherit;
+  }
+}
+
+.twitter {
+  &:hover,
+  &:focus {
+    color: #00ACED;
+    box-shadow: 0 0 24px 0 #00ACED
+  }
+}
+
+.github {
+  &:hover,
+  &:focus {
+    color: #4183c4;
+    box-shadow: 0 0 24px 0 #4183c4
+  }
+}
+
+.facebook {
+  &:hover,
+  &:focus {
+    color: #3b5998;
+    box-shadow: 0 0 24px 0 #3b5998
+  }
+}
+
+/*style and animate the sparkle on the page*/
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 8px #fff;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle 2s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
